@@ -23,7 +23,6 @@ int main(void)
     printf("Please enter the number you guess:");
     for(t=0;p!=4;t++)
     {
-        int ch[4]={0,0,0,0};
         p=0,q=0,b=3;
         scanf("%d",&c);
         while(b>=0)
@@ -31,31 +30,19 @@ int main(void)
             n[b--]=c%10;
             c/=10;
         }
-        while(++b<4)
+        for(a=0;a<4;a++)
         {
-            if(m[b]==n[b])
-                p++;
-        } 
-        while(--b>=0)
-        {
-            a=0;
-            while(a<4)
+            for(b=0;b<4;b++)
             {
-                if(ch[a]==1)
-                { 
-                    a++;
-                    continue;
-                }
-                if(n[b]==m[a])
+                if(n[a]==m[b])
                 {
-    	            ch[a]=1;
- 	                q++;
-	                break;
+                    if(a==b)
+                        p++;
+                    else
+                        q++;
                 }
-            a++;
             }
         }
-        q=q-p;
         if(p!=4)
         printf("\n%dA%dB.Try again:",p,q);
     }
