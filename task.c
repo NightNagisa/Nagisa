@@ -4,37 +4,37 @@
 
 int main(void)
 {
-    int m[4],a=0,b;
-    srand((unsigned)time(NULL));
-    m[a++]=1+rand()%9;
+    int answer[4],a=0,b;//使用answer数组储存正确答案，a、b用于遍历数组进行操作
+    srand((unsigned)time(NULL));//获取随机数组
+    answer[a++]=1+rand()%9;
     while(a<4)
     {
         b=0;
-        m[a]=rand()%10;
-        while(b<a)
-            if(m[b++]==m[a])
+        answer[a]=rand()%10;
+        while(b<a)//保证各个数位数字不重复
+            if(answer[b++]==answer[a])
             {
                 a--;
                 break;
             }
         a++;
     }
-    int n[4],c,t,p=0,q=0;
+    int guess[4],num,t,p=0,q=0;//使用num储存所猜数，t（time）表示猜数次数，p表示数字数位均正确的个数，q表示数字正确数位不正确的个数
     printf("Please enter the number you guess:");
-    for(t=0;p!=4;t++)
+    for(t=0;p!=4;t++)//使用for循环记录达成多次猜数并记录猜数次数
     {
         p=0,q=0,b=3;
-        scanf("%d",&c);
-        while(b>=0)
+        scanf("%d",&num);
+        while(b>=0)//除10取余将所猜数按数位储存进guess数组
         {
-            n[b--]=c%10;
-            c/=10;
+            guess[b--]=num%10;
+            num/=10;
         }
-        for(a=0;a<4;a++)
+        for(a=0;a<4;a++)//使用a、b遍历两个数组求p、q
         {
             for(b=0;b<4;b++)
             {
-                if(n[a]==m[b])
+                if(guess[a]==answer[b])
                 {
                     if(a==b)
                         p++;
