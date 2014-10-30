@@ -26,7 +26,7 @@ int main(void)
 void BubbleSort(int array[],int length)
 {
     int a,l,r,end=0;//声明变量a表示数组通过冒泡排序法排序好的前n个数，l为数组末的array[l]用于规划每一次循环的起点，r、end均为标记,
-    for(a=0;length>a;a=end)//标记o表示上一次排序中最后一次进行数字对调的位置，将其值赋给a，最大程度缩短遍历数组的长度
+    for(a=0;length>a;a=end)//标记end表示上一次排序中最后一次进行数字对调的位置，将其值赋给a，最大程度缩短遍历数组的长度
     {
         l=length-1;
         r=1;//给标记r赋初值1
